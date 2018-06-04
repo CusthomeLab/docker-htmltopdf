@@ -1,3 +1,7 @@
+/**
+ * @see https://github.com/GoogleChrome/puppeteer/issues/422
+ */
+
 'use strict';
 
 const express = require('express');
@@ -37,7 +41,7 @@ app.post('/', async (req, res) => {
 
     const page = await browser.newPage();
 
-    await page.goto('file://' + tmpHtmlFile.name, {waitUntil: 'networkidle2'});
+    await page.goto('file://' + tmpHtmlFile.name, {waitUntil: 'networkidle0'});
 
     let pdf = await page.pdf(settings);
 
